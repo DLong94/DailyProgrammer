@@ -6,25 +6,42 @@ using System.Threading.Tasks;
 
 namespace DailyProgrammer
 {
-    class Kaprekar
+    static class Kaprekar
     {
-        public void Solve(int start, int end)
+        public static void Solve(int start, int end)
         {
             List<int> KaprekarNumbers = new List<int>();
-
             for (int x = start; x <= end; x++)
             {
-                if (Check(x))
+                if (Check(Convert.ToInt32(Math.Pow(x, 2))))
                 {
                     KaprekarNumbers.Add(x);
                 }
             }
-            Console.WriteLine(KaprekarNumbers.ToString());
+            Console.WriteLine(String.Join(", ", KaprekarNumbers.ToArray()));
         }
 
-        private bool Check(int number)
+        private static bool Check(int number)
         {
-            return 1;
+            int num1;
+            int num2;
+
+            for(int y = 1; y < number.ToString().Length; y++)
+            {
+                num1 = Convert.ToInt32(number.ToString().Substring(0, y));
+                num2 = Convert.ToInt32(number.ToString().Substring(y));
+                
+                if (num2 == 0)
+                {
+                    continue;
+                }
+
+                if (num1 + num2 == number)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

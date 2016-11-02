@@ -10,6 +10,9 @@ namespace DailyProgrammer
     {
         static void Main(string[] args)
         {
+            Kaprekar.Solve(1, 500);
+
+            Console.ReadLine();
         }
     }
 }
